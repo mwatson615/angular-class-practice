@@ -1,6 +1,6 @@
 console.log("app.js")
 
-var app = angular.module('whateverApp', ['ngRoute'])
+const app = angular.module('whateverApp', ['ngRoute'])
 
 app.config(function($routeProvider) {
 	$routeProvider
@@ -14,9 +14,15 @@ app.config(function($routeProvider) {
 		})
 })
 
-app.controller('ListCtrl', function($scope) {
+app.controller('ListCtrl', function($scope, $http) {
 	$scope.myVariable = "angular"
-	console.log("here is the list controller")
+	// console.log("here is the list controller")
+
+	$http.get(`list.json`) //returns promise
+	.then(function(stuff) {
+		console.log('stuff', stuff)
+		$scope.list = stuff.data.list;
+	})
 })
 
 app.controller('MainCtrl', function($scope) {
