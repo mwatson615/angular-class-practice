@@ -1,10 +1,12 @@
 <h1>List partial</h1>
 <h3>List</h3>
 <h5 ng-if="list.length >= 0">My List has {{list.length}}</h5>
+	<input type="text" ng-model="searchList" name="">
 	<ul>
-		<!-- <li>thing 1</li>
-		<li>thing 2</li> -->
-		<li ng-repeat="listItem in list">Item: {{listItem}}</li>
+	<!-- <li ng-repeat="listItem in list | filter: searchList">item: {{listItem}}</li> -->
+		<!-- <li ng-repeat="listItem in list | filter: searchList"<a href="/list/{{listItem.id}}">item: {{listItem.item}}</a></li> -->
 		<!-- <li>thing 4</li>
 		<li>thing 5</li> -->
 	</ul>
+
+	<li ng-repeat="listItem in list"><a href="#/list/{{listItem.id}}">{{listItem.item}}</a></li>
